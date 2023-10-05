@@ -1,13 +1,14 @@
 import express from 'express';
 import { createServer } from 'node:http';
+const port = 3001
 
 const app = express();
 const server = createServer(app);
 
 app.get('/', (req, res) => {
-  res.send('<h1>Hello world</h1>');
+  res.sendFile(new URL('./index.html', import.meta.url).pathname);
 });
 
-server.listen(3000, () => {
-  console.log('server running at http://localhost:3000');
+server.listen(port, () => {
+  console.log(`server running at ${port}`);
 });
